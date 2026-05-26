@@ -1,0 +1,41 @@
+Loop:When you want to work with multiple data
+
+Entry Control :
+for,while
+
+Exit Control :
+do while
+
+List:
+for in
+foreach
+ 
+syntax:
+1)
+for(initialization;condition;incre/decre)
+{
+	statements
+}
+
+2)
+initialization;
+
+while(condition)
+{
+	statement
+	incre/decre
+}
+
+3)
+initialization;
+
+do
+{
+	statement
+	incre/decre	
+}
+while(condition);
+
+
+1234
+
