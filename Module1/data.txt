@@ -1,0 +1,237 @@
+## 13. Count Digits in a Number
+
+**Question:** Write a program to count the number of digits in a number.
+
+```dart
+int num = 12345;
+int count = 0;
+
+while (num > 0) {
+  count++;
+  num ~/= 10;
+}
+
+print(count);
+```
+
+**Output:**
+
+```
+5
+```
+
+---
+
+## 14. Sum of Digits
+
+**Question:** Write a program to find the sum of digits of a number.
+
+```dart
+int num = 1234;
+int sum = 0;
+
+while (num > 0) {
+  sum += num % 10;
+  num ~/= 10;
+}
+
+print(sum);
+```
+
+**Output:**
+
+```
+10
+```
+
+---
+
+## 15. Find Largest Digit in a Number
+
+**Question:** Write a program to find the largest digit in a number.
+
+```dart
+int num = 58291;
+int largest = 0;
+
+while (num > 0) {
+  int digit = num % 10;
+
+  if (digit > largest) {
+    largest = digit;
+  }
+
+  num ~/= 10;
+}
+
+print(largest);
+```
+
+**Output:**
+
+```
+9
+```
+
+---
+
+## 16. Count Even and Odd Digits
+
+**Question:** Write a program to count even and odd digits in a number.
+
+```dart
+int num = 123456;
+int even = 0;
+int odd = 0;
+
+while (num > 0) {
+  int digit = num % 10;
+
+  if (digit % 2 == 0) {
+    even++;
+  } else {
+    odd++;
+  }
+
+  num ~/= 10;
+}
+
+print("Even Digits = $even");
+print("Odd Digits = $odd");
+```
+
+**Output:**
+
+```
+Even Digits = 3
+Odd Digits = 3
+```
+
+---
+
+## 17. Print All Even Numbers from 1 to 100
+
+**Question:** Write a program to print all even numbers from 1 to 100.
+
+```dart
+for (int i = 1; i <= 100; i++) {
+  if (i % 2 == 0) {
+    print(i);
+  }
+}
+```
+
+**Output:**
+
+```
+2 4 6 8 ... 100
+```
+
+---
+
+## 18. Print All Odd Numbers from 1 to 100
+
+**Question:** Write a program to print all odd numbers from 1 to 100.
+
+```dart
+for (int i = 1; i <= 100; i++) {
+  if (i % 2 != 0) {
+    print(i);
+  }
+}
+```
+
+**Output:**
+
+```
+1 3 5 7 ... 99
+```
+
+---
+
+## 19. Find GCD of Two Numbers
+
+**Question:** Write a program to find the GCD of two numbers.
+
+```dart
+int a = 24;
+int b = 36;
+int gcd = 1;
+
+for (int i = 1; i <= a && i <= b; i++) {
+  if (a % i == 0 && b % i == 0) {
+    gcd = i;
+  }
+}
+
+print(gcd);
+```
+
+**Output:**
+
+```
+12
+```
+
+---
+
+## 20. Check Perfect Number
+
+**Question:** Write a program to check whether a number is a perfect number.
+
+```dart
+int num = 28;
+int sum = 0;
+
+for (int i = 1; i < num; i++) {
+  if (num % i == 0) {
+    sum += i;
+  }
+}
+
+if (sum == num) {
+  print("Perfect Number");
+} else {
+  print("Not Perfect Number");
+}
+```
+
+**Output:**
+
+```
+Perfect Number
+```
+
+---
+
+## 21. Print Prime Numbers from 1 to 50
+
+**Question:** Write a program to print all prime numbers from 1 to 50.
+
+```dart
+for (int num = 2; num <= 50; num++) {
+  bool isPrime = true;
+
+  for (int i = 2; i <= num ~/ 2; i++) {
+    if (num % i == 0) {
+      isPrime = false;
+      break;
+    }
+  }
+
+  if (isPrime) {
+    print(num);
+  }
+}
+```
+
+**Output:**
+
+```
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
+```
+
+---
+
+
+

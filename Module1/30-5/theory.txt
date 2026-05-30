@@ -1,0 +1,55 @@
+Functions:When we want to reuse the code again and again at that
+time we are creating functions
+
+1)User-defined Function:
+
+-> with para with return type
+-> with para without return type
+-> without para with return type
+-> without para without return type
+
+
+2)Inbuilt Function
+
+syntax:
+
+return_type fun_name()
+{
+
+}
+
+void getdetail(para(arguments))
+{
+	
+}
+
+int getnum()
+{
+	return num;
+}
+
+
+
+Parameters:A value which is passing inside function
+
+
+-> 
+
+void getdetail()
+{
+}
+
+->
+
+
+getdetail()
+{
+}
+
+Types of Parameters:
+1)optinal para
+2)named para
+3)default para
+
+
+
