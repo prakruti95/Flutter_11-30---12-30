@@ -29,3 +29,33 @@ ex:
 2)method overriding
 
 
+how to create a class:
+
+class classname
+{
+
+}
+
+how to create an object:
+classname objname = new classname();
+
+
+how to create a method:
+display()
+show()
+view()
+
+
+constructor:when method having a same name as a classname then it's called constructor
+
+Types of Constructor
+1)default
+2)parameterized
+3)named
+
+
+
+
+
+
+
