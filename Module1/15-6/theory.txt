@@ -1,0 +1,16 @@
+Polymorphism:
+
+1)Method Overloading : When two or more methods having a same name but number of parameters 
+are diffrent
+-> not supported in dart
+-> because it's a dynamic typed language
+
+2)Method Overriding : When two or more methods having a same name and number of parameters are 
+also same
+
+Exception Handling:
+
+Keywords:
+try-catch
+throw
+finally
