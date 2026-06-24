@@ -1,0 +1,7 @@
+Firstname
+Lastname
+Email
+Mobile
+Password
+Confirm Password
+password-hide/show button
