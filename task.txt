@@ -1,0 +1,5 @@
+task-cafe mini app
+splashscreen
+logo
+title
+login screen
