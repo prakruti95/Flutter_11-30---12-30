@@ -1,0 +1,310 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const LoginScreen(),
+    );
+  }
+}
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            bool isTablet = constraints.maxWidth > 700;
+            bool isLandscape =
+                MediaQuery.of(context).orientation == Orientation.landscape;
+
+            return Center(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(20),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: isTablet ? 450 : 400,
+                  ),
+                  child: Card(
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(isTablet ? 32 : 24),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.lock_outline,
+                            size: isTablet ? 90 : 70,
+                            color: Colors.blue,
+                          ),
+
+                          SizedBox(height: isLandscape ? 20 : 30),
+
+                          Text(
+                            "Welcome Back",
+                            style: TextStyle(
+                              fontSize: isTablet ? 32 : 26,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+
+                          const SizedBox(height: 10),
+
+                          Text(
+                            "Login to continue",
+                            style: TextStyle(
+                              fontSize: isTablet ? 18 : 16,
+                              color: Colors.grey,
+                            ),
+                          ),
+
+                          const SizedBox(height: 30),
+
+                          TextField(
+                            decoration: InputDecoration(
+                              labelText: "Email",
+                              prefixIcon: const Icon(Icons.email),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(height: 20),
+
+                          TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              labelText: "Password",
+                              prefixIcon: const Icon(Icons.lock),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(height: 30),
+
+                          SizedBox(
+                            width: double.infinity,
+                            height: 55,
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: const Text(
+                                "LOGIN",
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(height: 15),
+
+                          TextButton(
+                            onPressed: () {},
+                            child: const Text("Forgot Password?"),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+===============================================================
+In Flutter, there are two common approaches to generate a bill PDF:
+
+1. **Generate a PDF programmatically** (best for invoices and bills).
+2. **Convert an existing widget/screen into a PDF**.
+
+For billing applications, the first approach is recommended because the PDF is clean, printable, and doesn't depend on screen size.
+
+## Step 1: Add dependencies
+
+In `pubspec.yaml`:
+
+```yaml
+dependencies:
+  pdf: ^3.11.0
+  printing: ^5.14.0
+```
+
+Run:
+
+```bash
+flutter pub get
+```
+
+---
+
+## Step 2: Create PDF
+
+```dart
+import 'dart:io';
+
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
+
+Future<void> generateBillPdf() async {
+  final pdf = pw.Document();
+
+  pdf.addPage(
+    pw.Page(
+      pageFormat: PdfPageFormat.a4,
+      build: (context) {
+        return pw.Column(
+          crossAxisAlignment: pw.CrossAxisAlignment.start,
+          children: [
+
+            pw.Text(
+              "Invoice",
+              style: pw.TextStyle(
+                fontSize: 24,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
+
+            pw.SizedBox(height: 20),
+
+            pw.Text("Customer: John Doe"),
+            pw.Text("Invoice No: INV001"),
+            pw.Text("Date: 16-07-2026"),
+
+            pw.SizedBox(height: 20),
+
+            pw.Table.fromTextArray(
+              headers: [
+                'Item',
+                'Qty',
+                'Price',
+                'Total',
+              ],
+              data: [
+                ['Apple', '2', '50', '100'],
+                ['Orange', '3', '30', '90'],
+                ['Banana', '5', '10', '50'],
+              ],
+            ),
+
+            pw.SizedBox(height: 20),
+
+            pw.Align(
+              alignment: pw.Alignment.centerRight,
+              child: pw.Text(
+                "Grand Total: ₹240",
+                style: pw.TextStyle(
+                  fontSize: 18,
+                  fontWeight: pw.FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    ),
+  );
+
+  await Printing.layoutPdf(
+    onLayout: (PdfPageFormat format) async => pdf.save(),
+  );
+}
+```
+
+Call it:
+
+```dart
+ElevatedButton(
+  onPressed: generateBillPdf,
+  child: const Text("Generate PDF"),
+)
+```
+
+---
+
+## Step 3: Save PDF locally (optional)
+
+```dart
+import 'package:path_provider/path_provider.dart';
+
+Future<File> savePdf(pw.Document pdf) async {
+  final dir = await getApplicationDocumentsDirectory();
+
+  final file = File("${dir.path}/invoice.pdf");
+
+  await file.writeAsBytes(await pdf.save());
+
+  return file;
+}
+```
+
+Add:
+
+```yaml
+dependencies:
+  path_provider: ^2.1.5
+```
+
+---
+
+## Example with Dynamic Data
+
+Suppose you have:
+
+```dart
+class BillItem {
+  final String name;
+  final int qty;
+  final double price;
+
+  BillItem({
+    required this.name,
+    required this.qty,
+    required this.price,
+  });
+}
+
+List<BillItem> items = [
+  BillItem(name: "Milk", qty: 2, price: 30),
+  BillItem(name: "Bread", qty: 1, price: 40),
+];
+```
+
+Generate table rows dynamically:
+
+```dart
+pw.Table.fromTextArray(
+  headers: ['Item', 'Qty', 'Price', 'Total'],
+  data: items.map((item) {
+    return [
+      item.name,
+      item.qty.toString(),
+      item.price.toStringAsFixed(2),
+      (item.qty * item.price).toStringAsFixed(2),
+    ];
+  }).toList(),
+)
+```
+
+---
+
