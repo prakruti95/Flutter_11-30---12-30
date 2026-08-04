@@ -1,0 +1,22 @@
+table:yogesh_products
+
+column:
+product_name
+product_price
+product_des
+id
+
+API:
+insert
+view
+update
+delete
+
+index:
+echo "<h2>Yogesh API</h2>";
+echo "<ul>";
+echo "<li><a href='yogesh/insert.php'>Insert Data</a></li>";
+echo "<li><a href='yogesh/view.php'>View Data</a></li>";
+echo "</ul>";
+
+sql file :table

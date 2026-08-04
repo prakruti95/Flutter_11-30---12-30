@@ -1,0 +1,19 @@
+<?php
+
+    define('HOST',"localhost");
+    define('USER',"root");
+    define('PASS',"");
+    define('DB',"tops");
+
+
+    $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect');
+
+    // if($con)
+    //     {
+    //         echo "Success";
+    //     }
+    // else
+    //     {
+    //         echo "Fail";
+    //     }
+?>
