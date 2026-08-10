@@ -1,0 +1,70 @@
+Inventory Management System:
+
+Admin
+
+admin login
+
+add employee
+view employee
+update employee
+delete employee
+
+product add
+product view
+product update
+product delete
+product search
+search-filter
+logout
+
+
+User
+
+user login
+product view
+search-filter
+final discounted price
+
+Table:
+Users:
+
+id
+name
+surname
+gender
+email
+phone
+password
+identifier:Admin
+
+Product
+pid
+pname
+pprice
+pimage
+final discounted price
+features
+ratings
+
+
+
+admin API:
+
+admin login
+insert emp
+view emp
+update emp
+delete emp
+insert product
+view product -> filter code -> final discounted price insert
+product view -> search filter -> final discounted price view
+update product
+delete product
+
+
+Emp API:
+
+emp login
+emp product view -> search filter -> final discounted price view
+
+
