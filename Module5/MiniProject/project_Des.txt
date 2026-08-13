@@ -67,4 +67,60 @@ Emp API:
 emp login
 emp product view -> search filter -> final discounted price view
 
+=============================================================================
+[13-8]
+Add Photo Option in Emp API and Tab
+-> Add Source Camera/Gallery
+aadhar card
+
+Product :
+Column -> Quantity
+Admin -> Can Edit Quantity,Add Quantity
+Bill Generate
+Customer Detail Form
+Bill Send
+
+
+Admin,Emp:
+Table -> Customers
+Quantity
+Invoice -> Whatsapp
+Customer Email[PHP Mailer]
+
+
+View History Details of Emp With Customers:
+History -> Emp Detail and all invoice
+
+Broadcast Msg -> Push Notification[Optional]
+-> Display All Customer Detail
+-> Send MSG
+
+Whatsapp API MSG
+
+--------------------------API-------------------------
+Emp API 
+add 2 col -> aadhar_card,photo
+
+Product API
+add 
+edit
+
+Table : Customers
+
+Sellrer_name
+Invoice
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
