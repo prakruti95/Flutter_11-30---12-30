@@ -76,6 +76,9 @@ aadhar card
 Product :
 Column -> Quantity
 Admin -> Can Edit Quantity,Add Quantity
+
+
+
 Bill Generate
 Customer Detail Form
 Bill Send
